@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        Username:
+        <input id="name" type="text" placeholder="Your Name">
+        <br> Email: <input type="e-mail" placeholder="yourname@email.com">
+        <br> Password: <input id="pass" type="password">
+        <br> Repeat password: <input id="passRepeat" type="password">
+        <br> Phone Number: <input id="phone" type="number">
+        <br> Country: <input id="country" type="text">
+        <br>
+        <button type="button" onclick="submitForm();">Submit</button>
+
+        <br>
+        <div id="errorMessage"></div> <br>
+
+
+    </form>
+
+
+    <script type="text/javascript">
+        function submitForm() {
+            var name = document.getElementById("name");
+            var errorMessage = document.getElementById("errorMessage");
+            errorMessage.style.color = 'red';
+            document.getElementById("errorMessage").innerHTML = "";
+            if (name.value.length < 5) {
+                errorMessage.innerHTML += "Your name is too short. <br>";
+            } 
+            if (document.getElementById("pass").value.length < 6) {
+                errorMessage.innerHTML += "Your password is too short - use at least 6 characters. <br>";
+            }
+            if (document.getElementById("pass").value !== document.getElementById("passRepeat").value) {
+                errorMessage.innerHTML += "Your passwords don't match. <br>";
+            }
+            if (document.getElementById("country").value !== "Israel" && document.getElementById("country").value !== "USA") {
+                errorMessage.innerHTML += "Your country is incorrect. <br>";
+            }
+            if (document.getElementById("phone").value.length > 15) {
+                errorMessage.innerHTML += "Your phone number is too long. <br>";
+            }
+            if (errorMessage.innerHTML === "") {
+                errorMessage.style.color = 'green';
+                errorMessage.innerHTML = "Thank you, " + name.value + ", you've done it!";
+            }
+          }
+    </script>
+
+</body>
+
+</html>
